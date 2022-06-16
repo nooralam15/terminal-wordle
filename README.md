@@ -1,1 +1,1 @@
-# terminal-wordle
+#Termina
