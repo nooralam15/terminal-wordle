@@ -4,24 +4,24 @@
 import random, sys, re, colorama 
 from colorama import Fore
 
+
 #Create a user input processing function
 def userInptProcess(userInput):
     return list(userInput)
-
-
 
 #create an answer check function
 def answerCheck(answer, userInp, userInpList):
     for i in range(len(userInpList)):
         if userInpList[i] == answer[i]:
-            print(Fore.GREEN + userInp[i], end="")
+            print(Fore.GREEN + userInp[i], end="" + Fore.WHITE)
         elif userInpList[i] in answer:
-            print(Fore.YELLOW + userInpList[i], end="")
+            print(Fore.YELLOW + userInpList[i], end="" + Fore.WHITE)
         else:
-            print(Fore.WHITE + userInpList[i], end="")
+            print(userInpList[i], end="")
     
     if userInp == answer:
         print("\n" + "correct guess")
+        return True
         
 
 #Function that loads data
@@ -46,7 +46,14 @@ def main():
     userInput = input("Enter a five letter word: ").lower()
     inputArray = userInptProcess(userInput)
     
-    answerCheck(currentAnswer, userInput, inputArray)
+    gameLoop = answerCheck(currentAnswer, userInput, inputArray)
+
+    while gameLoop != 1:
+            userInput = input("\nEnter a five letter word: ").lower()
+            inputArray = userInptProcess(userInput)
+            if answerCheck(currentAnswer, userInput, inputArray):
+                break
+            
 
     
 
