@@ -48,7 +48,7 @@ def main():
     
     gameLoop = answerCheck(currentAnswer, userInput, inputArray)
 
-    while gameLoop != 1:
+    while not gameLoop:
             userInput = input("\nEnter a five letter word: ").lower()
             inputArray = userInptProcess(userInput)
             if answerCheck(currentAnswer, userInput, inputArray):
